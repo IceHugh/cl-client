@@ -1,5 +1,4 @@
 import { NavLink } from "react-router";
-import { Button } from "@/components/ui/button"
 import { ConnectButton } from '@mysten/dapp-kit';
 
 export function Header() {

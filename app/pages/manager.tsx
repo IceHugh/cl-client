@@ -13,7 +13,6 @@ export default function ManagePage() {
               exercisePrice={3.8}
               exerciseDate="2024-12-15 20:00"
               amount={2000}
-              showActions="burn-mint-withdraw"
             />
             <OptionCard
               title="Covered Put Option"
@@ -21,7 +20,6 @@ export default function ManagePage() {
               exercisePrice={3.8}
               exerciseDate="2024-12-15 20:00"
               amount={2000}
-              showActions="burn-mint-withdraw"
             />
           </div>
         </div>
