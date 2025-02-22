@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router'
-import CreatePage from '@/pages/create'
+import CreatePage from '@/pages'
 import ManagePage from '@/pages/manager'
 import PortfolioPage from '@/pages/portfolio'
 

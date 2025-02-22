@@ -15,8 +15,8 @@ export function Footer() {
           </NavLink>
         </div>
         <div className="flex items-center gap-4">
-          <Button>Button</Button>
-          <Button variant="secondary">Secondary button</Button>
+          {/* <Button>Button</Button>
+          <Button variant="secondary">Secondary button</Button> */}
         </div>
       </div>
     </footer>

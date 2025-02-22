@@ -9,7 +9,7 @@ export function Header() {
           <span className="text-xl font-bold">Tokensmith</span>
         </NavLink>
         <nav className="flex items-center space-x-6">
-          <NavLink to="/" className="text-sm font-medium">
+          {/* <NavLink to="/" className="text-sm font-medium">
             Create
           </NavLink>
           <NavLink to="/manage" className="text-sm font-medium">
@@ -17,7 +17,7 @@ export function Header() {
           </NavLink>
           <NavLink to="/portfolio" className="text-sm font-medium">
             Portfolio
-          </NavLink>
+          </NavLink> */}
           <ConnectButton />
         </nav>
       </div>
