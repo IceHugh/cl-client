@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import { NavLink } from "react-router";
 
 export function Footer() {

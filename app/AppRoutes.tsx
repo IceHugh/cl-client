@@ -1,14 +1,10 @@
 import { Routes, Route } from 'react-router'
-import CreatePage from '@/pages'
-import ManagePage from '@/pages/manager'
-import PortfolioPage from '@/pages/portfolio'
+import Index from '@/pages'
 
 export function AppRoutes() {
   return (
     <Routes>
-      <Route path='/' element={<CreatePage />} />
-      <Route path='/manage' element={<ManagePage />} />
-      <Route path='/portfolio' element={<PortfolioPage />} />
+      <Route path='/' element={<Index />} />
     </Routes>
   )
 }
