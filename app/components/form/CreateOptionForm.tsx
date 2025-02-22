@@ -84,8 +84,6 @@ export function CreateOptionForm() {
     }
     setCoinNames(names)
     setCoinBalances(balances)
-
-    // 这里balance是作为上限值，用户输入的amount数量不能超过balance
     console.log("All coin balances:", balances)
     console.log("All coin names:", names)
   }
