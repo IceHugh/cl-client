@@ -29,11 +29,7 @@ function App() {
     <>
       <main>
         <QueryClientProvider client={queryClient}>
-<<<<<<< HEAD
           <SuiClientProvider networks={networkConfig} defaultNetwork='testnet'>
-=======
-          <SuiClientProvider networks={networkConfig} defaultNetwork='localnet'>
->>>>>>> 74387d62326da3ec1da2324d47b9d0ebe80b6c85
             <WalletProvider autoConnect>
               <Header />
               <section className='container mx-auto'>
