@@ -1,4 +1,5 @@
 import { CreateOptionForm } from "@/components/form/CreateOptionForm"
+import { CreateAmmForm } from "@/components/form/CreateAmmForm"
 
 
 
@@ -11,6 +12,7 @@ export default function CreatePage() {
         <div className="flex max-w-[980px] flex-col items-start gap-2">
           <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">Create Option</h1>
           <div className="w-full grid gap-6 md:grid-cols-2">
+            <CreateAmmForm />
             <CreateOptionForm />
           </div>
         </div>

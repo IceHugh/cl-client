@@ -14,13 +14,13 @@ export default function ManagePage() {
               exerciseDate="2024-12-15 20:00"
               amount={2000}
             />
-            <OptionCard
+            {/* <OptionCard
               title="Covered Put Option"
               asset="SUI"
               exercisePrice={3.8}
               exerciseDate="2024-12-15 20:00"
               amount={2000}
-            />
+            /> */}
           </div>
         </div>
       </section>
