@@ -1,6 +1,10 @@
 import { CreateOptionForm } from "@/components/form/CreateOptionForm"
 
+
+
+
 export default function CreatePage() {
+  
   return (
     <div className="relative flex min-h-screen flex-col">
       <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
