@@ -1,5 +1,7 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { useAccounts } from "@mysten/dapp-kit"
+import { use, useEffect } from "react"
 
 interface OptionCardProps {
   title: string
@@ -12,6 +14,12 @@ interface OptionCardProps {
 }
 
 export function OptionCard({ title, asset, exercisePrice, exerciseDate, amount, onExercise, onSwap }: OptionCardProps) {
+  const accounts = useAccounts()
+  console.log(accounts)
+  useEffect(() => {
+    console.log(accounts)
+  }, [accounts])
+  
   return (
     <Card className="w-full">
       <CardHeader>

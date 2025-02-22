@@ -6,15 +6,99 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
+import { useAccounts } from "@mysten/dapp-kit"
+import { use, useEffect, useState } from "react"
+import { getFullnodeUrl, SuiClient } from "@mysten/sui/client"
+import { WalletAccount } from "@mysten/wallet-standard"
 
-const formSchema = z.object({
-  asset: z.string().min(1, "Please select an asset"),
-  amount: z.string().min(1, "Please enter an amount"),
-  strikePrice: z.string().min(1, "Please enter a strike price"),
-  exerciseDate: z.string().min(1, "Please select an exercise date"),
-})
+
+
 
 export function CreateOptionForm() {
+  // const [address, setAddress] = useState("")
+  const accounts = useAccounts()
+  const [coinNames, setCoinNames] = useState<string[]>([])
+  const [coinBalances, setCoinBalances] = useState<string[]>([])
+
+
+    
+  //     const client = new SuiClient({
+  //       url: getFullnodeUrl("testnet"),
+  //     })
+  //     const objects = await client.getOwnedObjects({
+  //       owner: accounts[0].address,
+  //     });
+  //     for (const object of objects.data) {
+  //       console.log(object)
+  //     }
+  //     const resource = client.getCoinMetadata({
+  //       coinType: "0x75843eb5d02b04fbc7ea0ec6b2173688139798b7ac1656af8bee0090e6a2ff04::my_coin::MY_COIN",
+  //     });
+      // console.log(resource)
+
+      // console.log(resources)
+  
+  // const [marketplaceId,setMarketplaceId] = useState("0x5a4a826dee99a1486c26895c6cb00dbea8aa3b43d72cb655125564c77f8092ca")
+  // const [packageid, setPackageId] = useState(
+  //   "0xbfa6bd48a5dac421fc20390d3909ce7a8ddce08d0a020cb907e390f33319c7b0"
+  // );
+  useEffect(() => {
+    if (accounts && accounts.length > 0) {
+      if(accounts[0].address) {
+        console.log(accounts[0].address)
+        fetchMeMeInfo()
+      }
+    }
+
+  }, [accounts])
+
+
+  const fetchMeMeInfo = async () => {
+    
+    const client = new SuiClient({
+      url: getFullnodeUrl("testnet"),
+    })
+    // const resources = await client.getOwnedObjects({
+    //   owner: accounts[0].address,
+    // });
+    // console.log(resources)
+    const allCoins = await client.getAllCoins({
+      owner: accounts[0].address,
+    })
+    let names: string[] = []
+    let balances: string[] = []
+    console.log(allCoins)
+    for (const SingleCoin of allCoins.data) {
+      // console.log(SingleCoin)
+      if (SingleCoin.balance) {
+        balances.push(SingleCoin.balance)
+      }
+      // console.log(SingleCoin.coinType)
+      const resource = await client.getCoinMetadata({
+        coinType: SingleCoin.coinType,
+      });
+      if (resource && resource.name) {
+        // console.log(resource.name)
+        names.push(resource.name)
+      }
+    }
+    setCoinNames(names)
+    setCoinBalances(balances)
+
+    // 这里balance是作为上限值，用户输入的amount数量不能超过balance
+    console.log("All coin balances:", balances)
+    console.log("All coin names:", names)
+  }
+ 
+
+
+  const formSchema = z.object({
+    asset: z.string().min(1, "Please select an asset"),
+    amount: z.string().min(1, "Please enter an amount"),
+    strikePrice: z.string().min(1, "Please enter a strike price"),
+    exerciseDate: z.string().min(1, "Please select an exercise date"),
+  })
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
